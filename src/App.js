@@ -10,7 +10,7 @@ function App() {
   return (
     <div className='container'>
       <Button />
-      <Canvas>
+      <Canvas shadows>
         <Camera />
         <Suspense fallback={null}>
           <Cat />

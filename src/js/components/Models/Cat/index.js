@@ -9,9 +9,9 @@ title: Cat IS2
 import React, { useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 
-export default function Cat(props) {
+const Cat = (props) => {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('scene.gltf');
+  const { nodes, materials, animations } = useGLTF('/models/cat/scene.gltf');
   const { actions } = useAnimations(animations, group);
 
   console.log(actions);
@@ -51,6 +51,8 @@ export default function Cat(props) {
       </group>
     </group>
   );
-}
+};
 
-useGLTF.preload('scene.gltf');
+useGLTF.preload('/models/cat/scene.gltf');
+
+export default Cat;

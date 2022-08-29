@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './js/components/App/App';
 import reportWebVitals from './reportWebVitals';
+
+const appHeight = () =>
+    document.documentElement.style.setProperty(
+        '--app-height',
+        `${window.innerHeight}px`
+    );
+window.addEventListener('resize', appHeight);
+appHeight();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,6 +1,7 @@
-import React, { useContext, 
-    // useState, 
-    // useEffect 
+import React, {
+  useContext,
+  // useState,
+  // useEffect
 } from 'react';
 // import PanningImage from 'COMPONENTS/PanningImage';
 import './style.scss';
@@ -9,17 +10,17 @@ import { FadeInOut } from 'HELPERS/framer-animations';
 // import ClickAudio from '../../assets/audios/02-click.mp3';
 import { AppContext } from '../context/appContext';
 import {
-    StepContent,
-    Root,
-    HeaderBlock,
-    // PositionContainer,
-    // Text,
-    Content,
-    LogoGenoshaContainer,
-    LayoutBackgroundContainer,
-    // HeaderBlockContent,
-    StepShareBg,
-    // ModalContainer,
+  StepContent,
+  Root,
+  HeaderBlock,
+  // PositionContainer,
+  // Text,
+  Content,
+  LogoGenoshaContainer,
+  LayoutBackgroundContainer,
+  // HeaderBlockContent,
+  StepShareBg,
+  // ModalContainer,
 } from './layoutStyle';
 import Background from '../../assets/images/bg.jpg';
 // import TecnologiaJaponesa from '../../assets/images/Logo_TecnologiaJaponesa_white.png';
@@ -30,110 +31,107 @@ import Background from '../../assets/images/bg.jpg';
 // import shareBgMobile from '../../assets/images/BG_share_mobile.jpg';
 // import Icon from '../components/Icons';
 
-const DefaultLayout = ({ children }) => {
-    const {
-        appState,
-        // setAppState,
-        // setUserState,
-        goToStep,
-        // getCurrentSceneImages,
-        // getTranslation,
-    } = useContext(AppContext);
-    // const [showBack, setShowBack] = useState(true);
+export const DefaultLayout = ({ children }) => {
+  const {
+    appState,
+    // setAppState,
+    // setUserState,
+    // goToStep,
+    // getCurrentSceneImages,
+    // getTranslation,
+  } = useContext(AppContext);
+  // const [showBack, setShowBack] = useState(true);
 
-    // const photoSaved = () => {
-    //     // When local storage changes, dump the list to
-    //     // the console.
-    //     if (localStorage.getItem('photoIsReady') === 'true') {
-    //         console.log(
-    //             'log del storage',
-    //             localStorage.getItem('photoIsReady'),
-    //             localStorage.getItem('photo')
-    //         );
-    //         setUserState((prevState) => ({
-    //             ...prevState,
-    //             photo: localStorage.getItem('photo'),
-    //         }));
-    //         return setAppState((prevState) => ({
-    //             ...prevState,
-    //             showIframe: false,
-    //             currentStep: 4,
-    //             postImg: true,
-    //         }));
-    //     }
-    //     return console.log('No se cargó la foto');
-    // };
+  // const photoSaved = () => {
+  //     // When local storage changes, dump the list to
+  //     // the console.
+  //     if (localStorage.getItem('photoIsReady') === 'true') {
+  //         console.log(
+  //             'log del storage',
+  //             localStorage.getItem('photoIsReady'),
+  //             localStorage.getItem('photo')
+  //         );
+  //         setUserState((prevState) => ({
+  //             ...prevState,
+  //             photo: localStorage.getItem('photo'),
+  //         }));
+  //         return setAppState((prevState) => ({
+  //             ...prevState,
+  //             showIframe: false,
+  //             currentStep: 4,
+  //             postImg: true,
+  //         }));
+  //     }
+  //     return console.log('No se cargó la foto');
+  // };
 
-    // useEffect(() => {
-    //     window.addEventListener('storage', photoSaved);
-    //     return () => window.removeEventListener('storage', photoSaved);
-    // }, []);
+  // useEffect(() => {
+  //     window.addEventListener('storage', photoSaved);
+  //     return () => window.removeEventListener('storage', photoSaved);
+  // }, []);
 
-    // const backButton = () => {
-    //     // const audio = document.getElementById('audio');
-    //     // audio.play();
-    //     setShowBack(false);
-    //     if (appState.currentStep === 7) {
-    //         goToStep(appState.currentStep - 2);
-    //     }
-    //     // if (appState.currentStep === 4 && appState.showIframe) {
-    //     //     setAppState((prevState) => ({
-    //     //         ...prevState,
-    //     //         showIframe: false,
-    //     //         // currentStep: 4,
-    //     //     }));
-    //     // } else {
-    //     //     goToStep(appState.currentStep - 1);
-    //     // }
-    //     setTimeout(() => {
-    //         setShowBack(true);
-    //     }, 2000);
-    // };
+  // const backButton = () => {
+  //     // const audio = document.getElementById('audio');
+  //     // audio.play();
+  //     setShowBack(false);
+  //     if (appState.currentStep === 7) {
+  //         goToStep(appState.currentStep - 2);
+  //     }
+  //     // if (appState.currentStep === 4 && appState.showIframe) {
+  //     //     setAppState((prevState) => ({
+  //     //         ...prevState,
+  //     //         showIframe: false,
+  //     //         // currentStep: 4,
+  //     //     }));
+  //     // } else {
+  //     //     goToStep(appState.currentStep - 1);
+  //     // }
+  //     setTimeout(() => {
+  //         setShowBack(true);
+  //     }, 2000);
+  // };
 
-    const backgroundAnimProps = {
-        entryTransition: { duration: 1 },
-        exitTransition: { duration: 1 },
-        blur: false,
-        animateY: false,
-        isNested: false,
-        containerProps: {
-            style: {
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                width: '100%',
-                height: '100%',
-            },
-        },
-    };
+  const backgroundAnimProps = {
+    entryTransition: { duration: 1 },
+    exitTransition: { duration: 1 },
+    blur: false,
+    animateY: false,
+    isNested: false,
+    containerProps: {
+      style: {
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+      },
+    },
+  };
 
-    return (
-        <Root>
-            <Content>
-                <LayoutBackgroundContainer>
-                        <AnimatePresence>
-                            {appState.currentStep === 0 && (
-                                <FadeInOut 
-                                    key="StepShareBg"
-                                    {...backgroundAnimProps}
-                                >
-                                    <StepShareBg
-                                        desktopBg={Background}
-                                        mobileBg={Background}
-                                    ></StepShareBg>
-                                </FadeInOut>
-                            )}
-                        </AnimatePresence>
-                    <div className="background-overlay"></div>
-                </LayoutBackgroundContainer>
+  return (
+    <Root>
+      <Content>
+        <LayoutBackgroundContainer>
+          <AnimatePresence>
+            {appState.currentStep === 0 && (
+              <FadeInOut key='StepShareBg' {...backgroundAnimProps}>
+                <StepShareBg
+                  desktopBg={Background}
+                  mobileBg={Background}
+                ></StepShareBg>
+              </FadeInOut>
+            )}
+          </AnimatePresence>
+          <div className='background-overlay'></div>
+        </LayoutBackgroundContainer>
 
-                {/* HEADER */}
+        {/* HEADER */}
 
-                <HeaderBlock>
-                    {/* <HeaderBlockContent> */}
+        <HeaderBlock>
+          {/* <HeaderBlockContent> */}
 
-                        {/* BACK BUTTON */}
-                        {/* {showBack && (
+          {/* BACK BUTTON */}
+          {/* {showBack && (
                             <FadeInOut
                                 component={PositionContainer}
                                 isVisible={
@@ -161,7 +159,7 @@ const DefaultLayout = ({ children }) => {
                                 </div>
                             </FadeInOut>
                         )} */}
-                        {/* <FadeInOut
+          {/* <FadeInOut
                             component={PositionContainer}
                             isVisible={true}
                             componentProps={{
@@ -176,25 +174,22 @@ const DefaultLayout = ({ children }) => {
                             <Icon name="nissan" width="216px" height="180px" />
                         </FadeInOut> */}
 
-                        <FadeInOut
-                            component={LogoGenoshaContainer}
-                            isVisible={true}
-                            animatePresence={true}
-                        >
-                            <span style={{ fontSize: '30px'}}>GENOSHA</span>
-                            {/* <Icon name="nissanFrontier" /> */}
-                        </FadeInOut>
-                    {/* </HeaderBlockContent> */}
-                </HeaderBlock>
+          <FadeInOut
+            component={LogoGenoshaContainer}
+            isVisible={true}
+            animatePresence={true}
+          >
+            <span style={{ fontSize: '30px' }}>GENOSHA</span>
+            {/* <Icon name="nissanFrontier" /> */}
+          </FadeInOut>
+          {/* </HeaderBlockContent> */}
+        </HeaderBlock>
 
-                {/* STEPS LAYOUT */}
-                <StepContent>
-                    {children}
-                </StepContent>
+        {/* STEPS LAYOUT */}
+        <StepContent>{children}</StepContent>
 
-
-                {/* {!appState.showIframe && ( */}
-                {/* <PositionContainer
+        {/* {!appState.showIframe && ( */}
+        {/* <PositionContainer
                     leftPropMobile="20px"
                     bottomPropMobile="16px"
                     // positionProp="unset"
@@ -215,7 +210,7 @@ const DefaultLayout = ({ children }) => {
                         // width={appState.lenguaje === 'pt_BR' ? '100px' : '90px'}
                     />
                 </PositionContainer> */}
-                {/* <PositionContainer
+        {/* <PositionContainer
                     rightProp="50px"
                     rightPropMobile="20px"
                     bottomProp="65px"
@@ -225,9 +220,9 @@ const DefaultLayout = ({ children }) => {
                 >
                     <img src={NissanIntelligent} width="122px" height="45px" />
                 </PositionContainer> */}
-                {/* <audio id="audio" src={ClickAudio}></audio> */}
-                {/* )} */}
-                {/* {appState.showIframe && (
+        {/* <audio id="audio" src={ClickAudio}></audio> */}
+        {/* )} */}
+        {/* {appState.showIframe && (
                     <ModalContainer>
                         <iframe
                             src={
@@ -238,13 +233,13 @@ const DefaultLayout = ({ children }) => {
                         />
                     </ModalContainer>
                 )} */}
-            </Content>
-        </Root>
-    );
+      </Content>
+    </Root>
+  );
 };
 
 const LayoutWrapper = (props) => (
-    <DefaultLayout {...props}>{props.children}</DefaultLayout>
+  <DefaultLayout {...props}>{props.children}</DefaultLayout>
 );
 
 export default LayoutWrapper;

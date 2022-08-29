@@ -1,105 +1,79 @@
 import styled from 'styled-components';
 
 export const Root = styled.div`
-    min-height: var(--app-height);
-    overflow-y: auto;
-    position: relative;
-    /* padding: 60px 65px 20px 65px; */
-    /* padding: 60px 65px 105px 65px; */
-    padding: 0px 65px 105px 65px;
-    @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
-        padding: 0 20px 55px 20px;
-    }
-    @media (min-width: ${(props) =>
-            props.theme.mediaQueryBreak}) and (max-width: ${(props) =>
-            props.theme.mediaQueryBreakLaptop}) {
-        padding: 0px 65px 20px 65px;
-    }
-    @media (max-height: 900px) and (max-width: 600px) {
-        padding-bottom: 53px;
-    }
+  min-height: var(--app-height);
+  overflow-y: auto;
+  position: relative;
 `;
 
 export const Content = styled.div`
-    display: flex;
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* padding: 60px 65px; */
-    @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
-        /* padding: 30px 20px; */
-    }
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  min-height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export const LayoutBackgroundContainer = styled.div`
-    position: fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  > .background {
+    width: 100%;
+    height: 100%;
+  }
+  > .background-overlay {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    > .background {
-        width: 100%;
-        height: 100%;
-    }
-    > .background-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-    }
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 `;
 
+export const StepShareBg = styled.div`
+  width: 100%;
+  height: 100%;
+  background-image: url(${(props) => props.mobileBg});
+  background-size: cover;
+  background-position: center center;
+  @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
+    background-image: url(${(props) => props.desktopBg});
+  }
+`;
 
 export const StepContent = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    max-width: 100%;
-    height: 100%;
-    /* overflow-y: auto; */
-    @media (max-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
-        margin-top: ${(props) => (props.currentStep !== 7 ? '200px' : '130px')};
-    }
-    @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
-        margin-top: 230px;
-        margin-top: ${(props) => (props.currentStep !== 7 ? '230px' : '150px')};
-    }
-    @media (max-width: ${(props) => props.theme.mediaQueryBreak2}) {
-        margin-top: ${(props) => (props.currentStep !== 7 ? '170px' : '110px')};
-    }
-    @media (min-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
-        margin-top: 240px;
-    }
-    @media (max-height: 900px) and (max-width: ${(props) =>
-            props.theme.mediaQueryBreak}) {
-        margin-top: ${(props) => (props.currentStep !== 7 ? '170px' : '110px')};
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  height: 100vh;
 `;
 
 export const HeaderBlock = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
     position: absolute;
     top: 0;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    
-    @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-    }
+    justify-content: center;
+    align-items: flex-start;
+  }
 `;
 
 // export const HeaderBlockContent = styled.div`
@@ -119,63 +93,62 @@ export const HeaderBlock = styled.div`
 // `;
 
 export const LogoGenoshaContainer = styled.div`
-    display: flex;
+  display: flex;
 
-    width: '100%';
-    justify-content: 'center';
-    // > div {
-    //     > svg {
-    //         width: 463px;
-    //         height: 106px;
-    //     }
-    // }
-    
+  width: '100%';
+  justify-content: 'center';
+  // > div {
+  //     > svg {
+  //         width: 463px;
+  //         height: 106px;
+  //     }
+  // }
 `;
 
 export const PositionContainer = styled.div`
-    display: ${(props) => props.displayProp || 'flex'};
-    height: ${(props) => props.heightProp || 'unset'};
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-end;
-    position: ${(props) => props.positionProp || 'absolute'};
-    top: ${(props) => props.topProp || 'unset'};
-    left: ${(props) => props.leftProp || 'unset'};
-    right: ${(props) => props.rightProp || 'unset'};
-    bottom: ${(props) => props.bottomProp || 'unset'};
-    @media (min-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
-        ${(props) =>
-            props.nissanIcon &&
-            `
+  display: ${(props) => props.displayProp || 'flex'};
+  height: ${(props) => props.heightProp || 'unset'};
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  position: ${(props) => props.positionProp || 'absolute'};
+  top: ${(props) => props.topProp || 'unset'};
+  left: ${(props) => props.leftProp || 'unset'};
+  right: ${(props) => props.rightProp || 'unset'};
+  bottom: ${(props) => props.bottomProp || 'unset'};
+  @media (min-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
+    ${(props) =>
+      props.nissanIcon &&
+      `
                 top: 60px;
                 left: 60px;
             `}
-        ${(props) =>
-            props.engineerIcon &&
-            `
+    ${(props) =>
+      props.engineerIcon &&
+      `
                 top: 60px;
                 right: 60px;
             `}
         ${(props) =>
-            props.intelligentIcon &&
-            `
+      props.intelligentIcon &&
+      `
                 z-index: 0;
                 right: 60px;
             `}
-    }
-    @media (max-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
-        ${(props) =>
-            props.engineerIcon &&
-            `
+  }
+  @media (max-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
+    ${(props) =>
+      props.engineerIcon &&
+      `
                 > div {
                     > svg {
                             display: none;
                     }
                 }
             `}
-        ${(props) =>
-            props.nissanIcon &&
-            `
+    ${(props) =>
+      props.nissanIcon &&
+      `
                 > div {
                     > svg {
                                 width: 131px;
@@ -183,17 +156,17 @@ export const PositionContainer = styled.div`
                         }
                     }
             `}
-    }
-    @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
-        display: ${(props) => props.displayPropMobile || 'flex'};
-        top: ${(props) => props.topPropMobile || 'unset'};
-        left: ${(props) => props.leftPropMobile || 'unset'};
-        right: ${(props) => props.rightPropMobile || 'unset'};
-        bottom: ${(props) => props.bottomPropMobile || 'unset'};
-        position: ${(props) => props.positionPropMobile || 'absolute'};
-        ${(props) =>
-            props.nissanIcon &&
-            `
+  }
+  @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
+    display: ${(props) => props.displayPropMobile || 'flex'};
+    top: ${(props) => props.topPropMobile || 'unset'};
+    left: ${(props) => props.leftPropMobile || 'unset'};
+    right: ${(props) => props.rightPropMobile || 'unset'};
+    bottom: ${(props) => props.bottomPropMobile || 'unset'};
+    position: ${(props) => props.positionPropMobile || 'absolute'};
+    ${(props) =>
+      props.nissanIcon &&
+      `
                 > div {
                     > svg {
                             width: 120px;
@@ -205,9 +178,9 @@ export const PositionContainer = styled.div`
                     }
                 }
             `}
-        ${(props) =>
-            props.intelligentIcon &&
-            `
+    ${(props) =>
+      props.intelligentIcon &&
+      `
             z-index: 0;
             > img {
                 width: 94px;
@@ -226,77 +199,77 @@ export const PositionContainer = styled.div`
             }
         `}
         ${(props) =>
-            props.engineerIconMobileWidth &&
-            `
+      props.engineerIconMobileWidth &&
+      `
                 > img {
                     width: ${props.engineerIconMobileWidth};
                 }
         `}
-    }
-    @media (max-width: ${(props) => props.theme.mediaQueryBreak2}) {
-        ${(props) =>
-            props.engineerIconSmallMobileWidth &&
-            `
+  }
+  @media (max-width: ${(props) => props.theme.mediaQueryBreak2}) {
+    ${(props) =>
+      props.engineerIconSmallMobileWidth &&
+      `
                 > img {
                     width: ${props.engineerIconSmallMobileWidth};
                 }
         `}
-    }
-    @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
-        ${(props) =>
-            props.engineerIconMobile &&
-            `
+  }
+  @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
+    ${(props) =>
+      props.engineerIconMobile &&
+      `
                 > img {
                     display: none;
                 }
         `}
-    }
+  }
 `;
 
 export const Text = styled.p`
-    margin: ${(props) => props.margin || 0};
-    color: ${(props) => props.color};
-    padding: ${(props) => props.padding || 0};
-    font-weight: ${(props) => props.fontWeight || 'unset'};
-    letter-spacing: ${(props) => props.letterSpacing || 'unset'};
-    font-size: ${(props) => props.fontSize || 'unset'};
-    line-height: ${(props) => props.lineHeight || 'unset'};
-    text-transform: ${(props) => props.textTransform || 'unset'};
-    max-width: ${(props) => props.maxWidth || 'unset'};
-    width: ${(props) => props.width || 'unset'};
-    overflow: ${(props) => props.overflow || 'unset'};
-    white-space: ${(props) => props.whiteSpace || 'unset'};
-    text-overflow: ${(props) => props.textOverflow || 'unset'};
-    text-decoration: ${(props) => props.textDecoration || 'unset'};
-    text-align: ${(props) => props.textAlign || 'unset'};
-    position: ${(props) => props.position || 'unset'};
-    cursor: ${(props) => props.cursor || 'unset'};
-    z-index: 2;
-    font-family: ${(props) => props.fontFamily};
-    word-break: break-word;
-    span {
-        font-weight: 900;
-    }
+  margin: ${(props) => props.margin || 0};
+  color: ${(props) => props.color};
+  padding: ${(props) => props.padding || 0};
+  font-weight: ${(props) => props.fontWeight || 'unset'};
+  letter-spacing: ${(props) => props.letterSpacing || 'unset'};
+  font-size: ${(props) => props.fontSize || 'unset'};
+  line-height: ${(props) => props.lineHeight || 'unset'};
+  text-transform: ${(props) => props.textTransform || 'unset'};
+  max-width: ${(props) => props.maxWidth || 'unset'};
+  width: ${(props) => props.width || 'unset'};
+  overflow: ${(props) => props.overflow || 'unset'};
+  white-space: ${(props) => props.whiteSpace || 'unset'};
+  text-overflow: ${(props) => props.textOverflow || 'unset'};
+  text-decoration: ${(props) => props.textDecoration || 'unset'};
+  text-align: ${(props) => props.textAlign || 'unset'};
+  position: ${(props) => props.position || 'unset'};
+  cursor: ${(props) => props.cursor || 'unset'};
+  z-index: 2;
+  font-family: ${(props) => props.fontFamily};
+  word-break: break-word;
+  span {
+    font-weight: 900;
+  }
 `;
 
 export const ModalContainer = styled.div`
-    z-index: 6;
-    height: 70vh;
-    width: 75vw;
-    max-width: 750px;
-    @media (max-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
-        width: 90vw;
-    }
-    @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
-        height: 90vh;
-        width: 90vw;
-        position: absolute;
-        top: 20px;
-    }
-    @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
-        height: 90vh;
-        width: 90vw;
-        position: absolute;
-        top: 50px;
-    }
+  z-index: 6;
+  height: 70vh;
+  width: 75vw;
+  max-width: 750px;
+  @media (max-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
+    width: 90vw;
+  }
+  @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
+    height: 90vh;
+    width: 90vw;
+    position: absolute;
+    top: 20px;
+  }
+  @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
+    height: 90vh;
+    width: 90vw;
+    position: absolute;
+    top: 50px;
+  }
 `;

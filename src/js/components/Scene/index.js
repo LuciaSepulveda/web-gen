@@ -6,28 +6,40 @@ import React, {
   //   useState,
   //   useRef,
 } from 'react';
-// import Button from 'COMPONENTS/Button/button';
-// import { FadeInOut, Staggers } from 'HELPERS/framer-animations';
-// import { AppContext } from '../../context/appContext';
-// import Icon from '../Icons';
-// import {
-//     Container,
-//     // FontierIconContainer,
-//     // Text,
-//     BtnsContainer,
-//     ButtonContainer,
-// } from './stepIntroStyles';
-// import IntroAudio from '../../../assets/audios/01-first-open.mp3';
-
+import { useThree } from '@react-three/fiber';
 import { OrbitControls, Sky } from '@react-three/drei';
-
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Camera from '../Camera/camera';
-
 import Cat from '../Models/Cat';
 import Plane from '../Models/Plane';
 import { PerspectiveCamera } from 'three';
+gsap.registerPlugin(ScrollTrigger);
 
 const Scene = () => {
+  const { camera } = useThree();
+  let timeline = gsap.timeline();
+  timeline
+    .to(camera.position, { duration: 2 })
+    .to(camera.position, {
+      y: 3,
+      z: -8,
+      duration: 3,
+      onUpdate: function () {
+        camera.lookAt(0, 0, -1);
+      },
+    })
+    .to(
+      camera.rotation,
+      {
+        x: 110,
+        duration: 3,
+        onUpdate: function () {
+          camera.lookAt(0, 0, -1);
+        },
+      },
+      '<'
+    );
   //   const {
   //     // appState,
   //     // setAppState,
@@ -47,7 +59,8 @@ const Scene = () => {
   function CameraHelper() {
     const camera = new PerspectiveCamera(60, 1, 1, 3);
     return (
-      <group position={[0, 10, -1]} rotation={[130, 0, 0]}>
+      // rotation={[110, 0, 0]} -> vista trasera horizontal
+      <group position={[0, 3, -8]} rotation={[110, 0, 0]}>
         <cameraHelper args={[camera]} />
       </group>
     );

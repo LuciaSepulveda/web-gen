@@ -13,33 +13,38 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Camera from '../Camera/camera';
 import Cat from '../Models/Cat';
 import Plane from '../Models/Plane';
+import ButtonMesh from '../Models/Button';
 import { PerspectiveCamera } from 'three';
 gsap.registerPlugin(ScrollTrigger);
 
 const Scene = () => {
   const { camera } = useThree();
-  let timeline = gsap.timeline();
-  timeline
-    .to(camera.position, { duration: 2 })
-    .to(camera.position, {
-      y: 3,
-      z: -8,
-      duration: 3,
-      onUpdate: function () {
-        camera.lookAt(0, 0, -1);
-      },
-    })
-    .to(
-      camera.rotation,
-      {
-        x: 110,
+
+  function handleStart() {
+    let timeline = gsap.timeline();
+    timeline
+      .to(camera.position, { duration: 2 })
+      .to(camera.position, {
+        y: 5,
+        z: -8,
         duration: 3,
         onUpdate: function () {
           camera.lookAt(0, 0, -1);
         },
-      },
-      '<'
-    );
+      })
+      .to(
+        camera.rotation,
+        {
+          x: 110,
+          duration: 3,
+          onUpdate: function () {
+            camera.lookAt(0, 0, -1);
+          },
+        },
+        '<'
+      );
+  }
+
   //   const {
   //     // appState,
   //     // setAppState,
@@ -74,6 +79,7 @@ const Scene = () => {
         <pointLight intensity={2} position={[7, 5, 1]} />
         <Sky sunPosition={[7, 5, 1]} />
         <Camera />
+        <ButtonMesh handleButtonClicked={handleStart} />
         <Cat position={[0, 0, -4]} />
 
         <Plane onClick={() => {}} rotation={[0, 0, 0]} position={[0, 0, 0]} />

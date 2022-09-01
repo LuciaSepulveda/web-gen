@@ -44,8 +44,8 @@ module.exports = {
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
-      title: 'GENOSHA 3.0',
-      favicon: paths.public + '/favicon.png',
+      title: 'GENOSHA GENOSHA | Agencia Creativa |',
+      favicon: paths.public + '/favicon.ico',
       template: paths.public + '/index.html', // template file
       filename: 'index.html', // output file
     }),

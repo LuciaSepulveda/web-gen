@@ -13,12 +13,11 @@ import {
   StepContent,
   Root,
   HeaderBlock,
-  // PositionContainer,
+  MenuContainer,
   // Text,
   Content,
   LogoGenoshaContainer,
   LayoutBackgroundContainer,
-  // HeaderBlockContent,
   StepShareBg,
   // ModalContainer,
 } from './layoutStyle';
@@ -29,14 +28,14 @@ import Background from '../../assets/images/bg.jpg';
 // import videoLayoutMobile from '../../assets/videos/FONDO_video_mobile.mp4';
 // import shareBgDesktop from '../../assets/images/BG_share_desktop.jpg';
 // import shareBgMobile from '../../assets/images/BG_share_mobile.jpg';
-// import Icon from '../components/Icons';
+import Icon from '../components/Icons';
 
 export const DefaultLayout = ({ children }) => {
   const {
     appState,
     // setAppState,
     // setUserState,
-    // goToStep,
+    goToStep,
     // getCurrentSceneImages,
     // getTranslation,
   } = useContext(AppContext);
@@ -126,67 +125,33 @@ export const DefaultLayout = ({ children }) => {
         </LayoutBackgroundContainer>
 
         {/* HEADER */}
-
-        <HeaderBlock>
-          {/* <HeaderBlockContent> */}
-
-          {/* BACK BUTTON */}
-          {/* {showBack && (
-                            <FadeInOut
-                                component={PositionContainer}
-                                isVisible={
-                                    appState.currentStep > 0 &&
-                                    appState.currentStep !== 6 &&
-                                    // !appState.showIframe &&
-                                    appState.currentStep < 8
-                                }
-                                animatePresence={true}
-                                componentProps={{
-                                    leftPropMobile: '20px',
-                                    topPropMobile: '30px',
-                                    displayProp: 'none',
-                                    positionPropMobile: 'absolute',
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        width: '10px',
-                                        cursor: 'pointer',
-                                    }}
-                                    onClick={backButton}
-                                >
-                                    {"<"}
-                                </div>
-                            </FadeInOut>
-                        )} */}
-          {/* <FadeInOut
-                            component={PositionContainer}
-                            isVisible={true}
-                            componentProps={{
-                                leftProp: '50px',
-                                topProp: '42px',
-                                topPropMobile: '30px',
-                                positionPropMobile: 'absolute',
-                                positionProp: 'absolute',
-                                nissanIcon: true,
-                            }}
-                        >
-                            <Icon name="nissan" width="216px" height="180px" />
-                        </FadeInOut> */}
-
-          <FadeInOut
-            component={LogoGenoshaContainer}
-            isVisible={true}
-            animatePresence={true}
-          >
-            <span style={{ fontSize: '30px' }}>GENOSHA</span>
-            {/* <Icon name="nissanFrontier" /> */}
-          </FadeInOut>
-          {/* </HeaderBlockContent> */}
-        </HeaderBlock>
+        {appState.currentStep !== 0 && (
+          <HeaderBlock>
+            <FadeInOut
+              component={LogoGenoshaContainer}
+              isVisible={true}
+              animatePresence={true}
+            >
+              <Icon name='genoshaIsotipo' onClick={() => goToStep(0)} />
+            </FadeInOut>
+            <FadeInOut
+              component={MenuContainer}
+              isVisible={true}
+              animatePresence={true}
+            >
+              <Icon name='menu' />
+            </FadeInOut>
+          </HeaderBlock>
+        )}
 
         {/* STEPS LAYOUT */}
-        <StepContent>{children}</StepContent>
+        <FadeInOut
+          component={StepContent}
+          isVisible={true}
+          animatePresence={true}
+        >
+          <StepContent>{children}</StepContent>
+        </FadeInOut>
 
         {/* {!appState.showIframe && ( */}
         {/* <PositionContainer

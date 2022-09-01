@@ -6,8 +6,8 @@ const Camera = ({ position }) => {
     <PerspectiveCamera
       makeDefault
       position={position ? position : [0, 10, -1]}
-      rotation={[130, 0, 0]}
-      fov={25}
+      rotation={[-Math.PI / 2, 0, 0]}
+      fov={40}
     />
   );
 };

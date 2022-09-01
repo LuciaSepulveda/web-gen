@@ -60,169 +60,38 @@ export const StepContent = styled.div`
 export const HeaderBlock = styled.div`
   position: absolute;
   top: 0;
+  z-index: 2;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
-  @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
+  padding: 10px 20px;
 `;
-
-// export const HeaderBlockContent = styled.div`
-//     display: flex;
-//     position: relative;
-//     width: 100%;
-//     height: 220px;
-//     justify-content: center;
-//     align-items: flex-start;
-//     @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
-//         display: flex;
-//         height: 220px;
-//         flex-direction: column;
-//         align-items: center;
-//         justify-content: space-between;
-//     }
-// `;
 
 export const LogoGenoshaContainer = styled.div`
+  cursor: pointer;
   display: flex;
-
   width: '100%';
   justify-content: 'center';
-  // > div {
-  //     > svg {
-  //         width: 463px;
-  //         height: 106px;
-  //     }
-  // }
+  > div {
+    > svg {
+      width: 45px;
+      height: fit-content;
+    }
+  }
 `;
 
-export const PositionContainer = styled.div`
-  display: ${(props) => props.displayProp || 'flex'};
-  height: ${(props) => props.heightProp || 'unset'};
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-  position: ${(props) => props.positionProp || 'absolute'};
-  top: ${(props) => props.topProp || 'unset'};
-  left: ${(props) => props.leftProp || 'unset'};
-  right: ${(props) => props.rightProp || 'unset'};
-  bottom: ${(props) => props.bottomProp || 'unset'};
-  @media (min-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
-    ${(props) =>
-      props.nissanIcon &&
-      `
-                top: 60px;
-                left: 60px;
-            `}
-    ${(props) =>
-      props.engineerIcon &&
-      `
-                top: 60px;
-                right: 60px;
-            `}
-        ${(props) =>
-      props.intelligentIcon &&
-      `
-                z-index: 0;
-                right: 60px;
-            `}
-  }
-  @media (max-width: ${(props) => props.theme.mediaQueryBreakLaptop}) {
-    ${(props) =>
-      props.engineerIcon &&
-      `
-                > div {
-                    > svg {
-                            display: none;
-                    }
-                }
-            `}
-    ${(props) =>
-      props.nissanIcon &&
-      `
-                > div {
-                    > svg {
-                                width: 131px;
-                                height: 108px;
-                        }
-                    }
-            `}
-  }
-  @media (max-width: ${(props) => props.theme.mediaQueryBreak}) {
-    display: ${(props) => props.displayPropMobile || 'flex'};
-    top: ${(props) => props.topPropMobile || 'unset'};
-    left: ${(props) => props.leftPropMobile || 'unset'};
-    right: ${(props) => props.rightPropMobile || 'unset'};
-    bottom: ${(props) => props.bottomPropMobile || 'unset'};
-    position: ${(props) => props.positionPropMobile || 'absolute'};
-    ${(props) =>
-      props.nissanIcon &&
-      `
-                > div {
-                    > svg {
-                            width: 120px;
-                            height: 100px;
-                            @media (max-height: 900px) and (max-width: ${props.theme.mediaQueryBreak}) {
-                                width: 75px;
-                                height: 67px;
-                        }
-                    }
-                }
-            `}
-    ${(props) =>
-      props.intelligentIcon &&
-      `
-            z-index: 0;
-            > img {
-                width: 94px;
-                height: 34px;
-                @media (max-width: ${props.theme.mediaQueryBreak2}) {
-                    width: 63px;
-                    height: 22px;
-                }
-            }
-            @media (max-width: ${props.theme.mediaQueryBreak2}) {
-                bottom: 15px;
-                > imb {
-                    width: 63px;
-                    height: 22px;
-                }
-            }
-        `}
-        ${(props) =>
-      props.engineerIconMobileWidth &&
-      `
-                > img {
-                    width: ${props.engineerIconMobileWidth};
-                }
-        `}
-  }
-  @media (max-width: ${(props) => props.theme.mediaQueryBreak2}) {
-    ${(props) =>
-      props.engineerIconSmallMobileWidth &&
-      `
-                > img {
-                    width: ${props.engineerIconSmallMobileWidth};
-                }
-        `}
-  }
-  @media (min-width: ${(props) => props.theme.mediaQueryBreak}) {
-    ${(props) =>
-      props.engineerIconMobile &&
-      `
-                > img {
-                    display: none;
-                }
-        `}
+export const MenuContainer = styled.div`
+  cursor: pointer;
+  display: flex;
+  width: '100%';
+  justify-content: 'center';
+  > div {
+    > svg {
+      width: 25px;
+      height: fit-content;
+    }
   }
 `;
 

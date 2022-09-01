@@ -1,29 +1,33 @@
+import * as THREE from 'three';
 import React from 'react';
+import { DoubleSide } from 'three';
+import { useLoader } from '@react-three/fiber';
 // import PropTypes from 'prop-types';
 
 const Plane = ({ position, onClick, rotation }) => {
+  const texture = useLoader(THREE.TextureLoader, '/models/plane/wireframe.png');
+  const alpha = useLoader(THREE.TextureLoader, '/models/plane/alpha.jpg');
+  const height = useLoader(THREE.TextureLoader, '/models/plane/height.png');
+
   return (
-    <mesh onClick={onClick} position={position} rotation={rotation}>
-      <planeBufferGeometry attach='geometry' args={[1400, 1300]} />
-      <meshBasicMaterial
-        attach='material'
-        color='red'
-        opacity={0.5}
-        transparent
-      />
-    </mesh>
+    !!texture && (
+      <mesh onClick={onClick} position={position} rotation={rotation}>
+        <planeBufferGeometry attach='geometry' args={[500, 500]} />
+        <meshStandardMaterial
+          attach='material'
+          color='pink'
+          opacity={0.5}
+          transparent
+          side={DoubleSide}
+          depthTest={true}
+          displacementScale={0.5}
+          map={texture}
+          alphaMap={alpha}
+          displacementMap={height}
+        />
+      </mesh>
+    )
   );
 };
-
-// Plane.propTypes = {
-//   position: PropTypes.array.isRequired,
-//   onClick: PropTypes.func,
-//   rotation: PropTypes.array,
-// };
-
-// Plane.defaultProps = {
-//   onClick: () => {},
-//   rotation: [0, 0, 0],
-// };
 
 export default Plane;

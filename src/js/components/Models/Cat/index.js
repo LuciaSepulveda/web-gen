@@ -6,8 +6,9 @@ source: https://sketchfab.com/3d-models/cat-is2-670791315b634cb0b1f59cbfe7cff3e4
 title: Cat IS2
 */
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 const Cat = (props) => {
   const group = useRef();
@@ -15,6 +16,21 @@ const Cat = (props) => {
   const { actions } = useAnimations(animations, group);
 
   console.log(actions);
+  useEffect(() => {
+    actions?.A_idle.play();
+  }, [actions]);
+
+  useFrame(({ clock }) => {
+    const frame = clock.getElapsedTime();
+    // console.log(frame);
+    if (frame === 5) {
+      actions?.A_walk.play();
+    }
+  });
+
+  // function renderAnimations() {
+
+  // }
   return (
     <group ref={group} {...props} dispose={null}>
       <group name='Sketchfab_Scene'>

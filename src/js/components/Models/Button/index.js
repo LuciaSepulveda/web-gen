@@ -6,21 +6,6 @@ const ButtonMesh = ({ handleButtonClicked }) => {
   const [hovered, hover] = useState(false);
 
   return (
-    // <mesh
-    //   ref={ref}
-    //   scale={hovered ? 1.2 : 1}
-    //   onClick={handleButtonClicked}
-    //   onPointerOver={(event) => hover(true)}
-    //   onPointerOut={(event) => hover(false)}
-    //   rotation={[7.82, 110, 0]}
-    //   position={[0, 0, 1]}
-    // >
-    //   <boxGeometry attach='geometry' args={[1, 1, 0.2]} />
-    //   <meshStandardMaterial
-    //     attach='material'
-    //     color={hovered ? 'hotpink' : 'orange'}
-    //   />
-    // </mesh>
     <group>
       <mesh
         ref={ref}

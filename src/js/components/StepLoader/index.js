@@ -5,7 +5,7 @@ import Icon from '../Icons';
 import { Container, BtnsContainer, ButtonContainer } from './stepIntroStyles';
 // import IntroAudio from '../../../assets/audios/01-first-open.mp3';
 
-const StepIntro = () => {
+const StepLoader = () => {
   const { goToStep } = useContext(AppContext);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const StepIntro = () => {
 
   return (
     <Staggers
-      key='StepIntro'
+      key='StepLoader'
       component={Container}
       isNested={true}
       visibleStaggers={0.2}
@@ -35,4 +35,4 @@ const StepIntro = () => {
   );
 };
 
-export default StepIntro;
+export default StepLoader;
